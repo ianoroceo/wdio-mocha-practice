@@ -130,8 +130,12 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        bail: false,
+        timeout: 60000,
+        grep:argv.grep
     },
+
+    screenshotPath: './errorScreenshots',
     //
     // =====
     // Hooks
@@ -162,8 +166,10 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function () {
+        var chai = require('chai');
+        expect = chai.expect;
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
