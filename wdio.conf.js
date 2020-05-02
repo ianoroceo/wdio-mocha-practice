@@ -1,39 +1,78 @@
-
+const utilities = require("./support/utils/Utilities");
+const chai = require('chai');
+const allure = require('@wdio/allure-reporter').default;
 const { ReportAggregator, HtmlReporter } = require('@rpii/wdio-html-reporter');
 const log4j = require('log4js');
 
+// Max time for single test case execution
+let timeout = process.env.DEBUG ? 99999999 : 120000;
+let elementTimeout = 10000;
+
+
 exports.config = {
-    //
-    // ====================
-    // Runner and Framework Configuration
-    // ====================
+
     runner: 'local',
+
+    specs: [
+        './test/specs/**/*.spec.js'
+    ],
+    // Patterns to exclude.
+    exclude: [
+        'path/to/excluded/files'
+    ],
+   
+    maxInstances: 10,
+   
+    capabilities: [{
+
+        maxInstances: 3,
+        //
+        browserName: 'chrome',
+        'goog:chromeOptions': {
+            args: ['--disable-infobars', '--start-maximized', '--incognito'],
+        }
+
+    }],
+
+    logLevel: 'debug',
+
+    deprecationWarnings: true,
+
+    bail: 0,
+ 
+    baseUrl: 'https://magento.nublue.co.uk',
+
+    waitforTimeout: elementTimeout,
+
+    connectionRetryTimeout: 90000,
+
+    connectionRetryCount: 3,
+
+    services: ['chromedriver',
+        // ['selenium-standalone', {
+        //     logPath: 'logs',
+        //     installArgs: {
+        //         drivers: {
+        //             chrome: { version: '79.0.3945.88' },
+        //             firefox: { version: '0.26.0' }
+        //         }
+        //     },
+        //     args: {
+        //         drivers: {
+        //             chrome: { version: '79.0.3945.88' },
+        //             firefox: { version: '0.26.0' }
+        //         }
+        //     },
+        // }]
+    ],
+    
+
     framework: 'mocha',
+
     mochaOpts: {
         ui: 'bdd',
-        bail: false,
-        timeout: 60000,
-        // grep: argv.grep,
-    },
-    logLevel: 'info',
-    bail: 0,
-    baseUrl: '',
-    // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
-    // Default timeout in milliseconds for request if browser driver or grid doesn't send response
-    connectionRetryTimeout: 120000,
-    //
-    // Default request retries count
-    connectionRetryCount: 3,
-    //
-    //
-    // Test runner services
-    services: ['sauce', 'selenium-standalone'],
-    // ====================
-    // Babel hooks
-    // ====================
-    beforeSession: (config, capabilities, specs) => {
-        require('@babel/register');
+        timeout: timeout,
+        require: ['@babel/register']
     },
 
     // ====================
@@ -42,7 +81,7 @@ exports.config = {
     reporters: ['spec',
         [HtmlReporter, {
             debug: true,
-            outputDir: './reports/html-reports/',
+            outputDir: './report/html-reports/',
             filename: 'report.html',
             reportTitle: 'Test Report Title',
 
@@ -67,10 +106,10 @@ exports.config = {
         }
         ]
     ],
-
+ 
     onPrepare: function (config, capabilities) {
         const reportAggregator = new ReportAggregator({
-            outputDir: './reports/html-reports/',
+            outputDir: './report/html-reports/',
             filename: 'master-report.html',
             reportTitle: 'Master Report',
             showInBrowser: true,
@@ -92,6 +131,34 @@ exports.config = {
             });
         })();
     },
+    
+    before: function (capabilities, specs) {
+        //global.allure = allure;
+        global.chai = chai;
+        global.utilities = utilities;
+    },
+
+    // beforeSuite: function (suite) {
+    //     allure.addFeature(suite.name);
+    // },
+
+    // beforeTest: function (test, context) {
+    //     allure.addEnvironment("BROWSER", browser.capabilities.browserName);
+    //     allure.addEnvironment("BROWSER_VERSION", browser.capabilities.version);
+    //     allure.addEnvironment("PLATFORM", browser.capabilities.platform);
+
+    // },
+
+    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
+    //     if (error !== undefined) {
+    //         try {
+    //             //TODO: Fix allure reporting on failure
+    //             utilities.takeScreenshot(test.title, true)
+    //         } catch {
+    //             console.log('>> Capture Screenshot Failed!');
+    //         }
+    //     }
+    // },
 
     afterTest: function (test) {
         const path = require('path');
@@ -102,7 +169,7 @@ exports.config = {
             return;
         }
         const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
-        const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');
+        const filepath = path.join('report/html-reports/screenshots/', timestamp + '.png');
         browser.saveScreenshot(filepath);
         process.emit('test:screenshot', filepath);
     },

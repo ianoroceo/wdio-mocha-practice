@@ -1,4 +1,3 @@
-/node_modules
-/.github
-/apps
-/docs
+/report/*
+/node_modules/*
+wdio.conf.js
