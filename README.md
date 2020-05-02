@@ -1,2 +1,2 @@
 # wdio-mocha-practice
-Repo for studying purposes using WDIO and Cucumber
+Repo for studying purposes using WebdriverIO with Mocha and Chai

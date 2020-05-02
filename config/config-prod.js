@@ -1,5 +1,5 @@
 var config = {
-    environment: 'QA',
+    environment: 'PROD',
     testPage: 'https://www.whatismyscreenresolution.com/',
     url: 'https://magento.nublue.co.uk/',
 

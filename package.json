@@ -1,33 +1,68 @@
 {
   "name": "wdio-mocha-practice",
   "version": "1.0.0",
-  "description": "Repo for studying purposes using WDIO and Cucumber",
-  "main": "index.js",
+  "description": "Repo for studying purposes using WDIO and Mocha with Chai",
+  "main": "./node_modules/.bin/wdio",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-chrome": "wdio wdio.chrome.app.js",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ianoroceo/wdio-mocha-practice.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "mocha",
+    "uitesting",
+    "webdriver",
+    "webdriverio",
+    "e2e",
+    "selenium",
+    "test automation",
+    "javascript"
+  ],
+  "author": "Ian Oroceo <oroceo.ian@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ianoroceo/wdio-mocha-practice/issues"
   },
   "homepage": "https://github.com/ianoroceo/wdio-mocha-practice#readme",
   "devDependencies": {
-    "@wdio/cli": "^5.11.10",
-    "@wdio/dot-reporter": "^5.11.7",
-    "@wdio/local-runner": "^5.11.10",
-    "@wdio/mocha-framework": "^5.11.0",
-    "@wdio/selenium-standalone-service": "^5.11.2",
-    "@wdio/spec-reporter": "^5.11.7",
-    "@wdio/sync": "^5.11.10",
-    "chromedriver": "^75.1.0",
-    "npx": "^10.2.0",
-    "wdio-chromedriver-service": "^5.0.2",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/register": "^7.9.0",
+    "@babel/traverse": "^7.9.6",
+    "@babel/types": "^7.9.6",
+    "@rpii/wdio-html-reporter": "^6.0.4",
+    "@wdio/allure-reporter": "^6.1.5",
+    "@wdio/cli": "^6.1.5",
+    "@wdio/dot-reporter": "^6.1.5",
+    "@wdio/local-runner": "^6.1.6",
+    "@wdio/mocha-framework": "^6.1.6",
+    "@wdio/sauce-service": "^6.1.0",
+    "@wdio/selenium-standalone-service": "^6.0.16",
+    "@wdio/spec-reporter": "^6.1.5",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-mocha": "^6.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-wdio": "^6.0.12",
+    "log4js": "^6.2.1",
+    "node-fetch": "^2.6.0",
+    "npx": "^10.2.2",
+    "webdriverio": "^6.1.5",
     "yargs": "^13.3.0"
+  },
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "chai": "^4.2.0"
   }
 }
