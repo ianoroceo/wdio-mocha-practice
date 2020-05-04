@@ -39,5 +39,7 @@ Choose one of the following options:
 - [webdriverio-mocha-uiautomation-boiler](https://github.com/serhatbolsu/webdriverio-mocha-uiautomation-boiler)
 - [appium-boilerplate](https://github.com/webdriverio/appium-boilerplate/)
 - [WebdriverIO API's](https://webdriver.io/docs/api.html)
+- [Mocha Documentation](https://mochajs.org/)
+- [Chai Documentation](https://www.chaijs.com/)
 - [CSS Selectors Cheat Sheet](https://www.adtrak.co.uk/blog/the-ultimate-css-selectors-cheatsheet)
 - [XPATH Cheat Sheet](https://devhints.io/xpath)
