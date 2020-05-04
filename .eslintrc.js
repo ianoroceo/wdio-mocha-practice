@@ -25,7 +25,7 @@ module.exports = {
         "arrow-parents": [0, "as-needed"],
         "require-jsdoc": "off",
         "brace-style": [0, "allman", { "allowSingleLine": true }],
-        "max-len": ["error", { "code": 100 }],
+        "max-len": ["error", { "code": 200 }],
         "object-curly-spacing": ["error", "always"],
         "babel/semi": 1
     },

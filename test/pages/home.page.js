@@ -13,18 +13,24 @@ class HomePage extends Page {
   get copyright() {return $('.copyright');}
 
   /**
-       * Main Section Content
-       */
+* Main Section Content
+*/
   get blockPromoMain() {return $('.block-promo.home-main');}
-  get shopPants() {return $('.home-pants');}
-  get shopTees() {return $('.home-t-shirts');}
-  get shopErin() {return $('.home-erin');}
-  get shopPerformance() {return $('.home-perormance');}
-  get shopEco() {return $('.home-eco');}
+  get shopPants() {return $('.block-promo-hp .home-pants');}
+  get shopTees() {return $('.block-promo-hp .home-t-shirts');}
+  get shopErin() {return $('.block-promo-hp .home-erin');}
+  get shopPerformance() {return $('.block-promo-hp .home-perormance');}
+  get shopEco() {return $('.block-promo-hp .home-eco');}
+
+  get blockPromos() {return $$('.block-promo-hp a');}
+  get blockPromoImages() {return $$('.block-promo-hp img');}
+
+  get hotSellerItems() {return $$('.widget-product-grid .product-item-info');}
+  get hotSellerItemName() {return $$('.widget-product-grid .product-item-name');}
 
   /**
-       * define or overwrite page methods
-       */
+* define or overwrite page methods
+*/
 
   open() {
     super.open('/');

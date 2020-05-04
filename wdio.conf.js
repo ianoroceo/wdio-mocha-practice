@@ -29,7 +29,7 @@ exports.config = {
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['--disable-infobars', '--start-maximized', '--incognito'],
+            args: ['--disable-infobars', '--window-size=1920,1440', '--incognito'],
         }
 
     }],
@@ -65,6 +65,7 @@ exports.config = {
         //     },
         // }]
     ],
+    port: 8080,
     
 
     framework: 'mocha',
