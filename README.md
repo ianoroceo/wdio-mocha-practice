@@ -35,6 +35,8 @@ Choose one of the following options:
 
 5. Once all tests are executed, an aggregated report will be generated and will show on your browser.
 
+> Note: The AUT is https://magento.nublue.co.uk/. Please change the AUT in the wdio.conf.js for your own AUT and change the page objects. I don't own Magento. I just found this site when I was doing my POC of http://curiositysoftware.ie/
+
 ## References
 - [webdriverio-mocha-uiautomation-boiler](https://github.com/serhatbolsu/webdriverio-mocha-uiautomation-boiler)
 - [appium-boilerplate](https://github.com/webdriverio/appium-boilerplate/)
