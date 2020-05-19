@@ -2,13 +2,13 @@ import homePage from '../pages/home.page';
 import testData from '../testData/testData';
 import { expect } from 'chai';
 
-describe('HomePage Suite', () => {
+describe('HomePage Test Suite', () => {
   beforeEach(() => {
     homePage.open();
     homePage.waitForIsShown(true);
   });
 
-  it('Verify that Homepage displays promos and shopping options', () => {
+  it('Should display the promos and shopping options in the Homepage', () => {
     expect(homePage.blockPromoMain.isDisplayed()).to.equal(true);
 
     const promoTexts = testData.promoText;
@@ -23,7 +23,7 @@ describe('HomePage Suite', () => {
 
   });
 
-  it('Verify that Homepage displays Hot Sellers', () => {
+  it('Should display Hot Sellers im the HomePage', () => {
     const productNames = testData.hotSellerItemName;
     let i;
     for (i = 0; i < homePage.hotSellerItemName.length; i++) {
